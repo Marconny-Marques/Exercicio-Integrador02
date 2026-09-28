@@ -16,27 +16,27 @@ class Pessoa {
       }
   
       setNome(nome) {
-        if(nome != null) {
-          this.#nome.trim() = nome;
-          return true;
+        if (typeof nome === 'string' && nome.trim() !== '') {
+            this.#nome = nome;
+            return true;
         }
         return false;
+    }
+  
+      getNome() {
+        return this.#nome = nome;
       }
   
-      getNome(nome) {
-        this.#nome = nome;
-      }
-  
-      setEmail(email){
-        if(util.validarEmail(email)){
+      setEmail(email) {
+        if (typeof email === 'string' && email.includes('@')) {
             this.#email = email;
             return true;
         }
         return false;
     }
   
-      getEmail(email) {
-        this.#email = email;
+      getEmail() {
+        return this.#email = email;
       }
 
     }

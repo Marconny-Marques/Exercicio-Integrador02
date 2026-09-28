@@ -1,29 +1,36 @@
-class Pj{
-    #cnpj
-    #razaoSocial    
+import Pessoa from './Pessoa.js';
 
-    getCnpj() {
+export default class PJ extends Pessoa {
+    #cnpj;
+    #razaoSocial;
+
+    constructor(nome = '', email = '', cnpj = '', razaoSocial = '') {
+        super(nome, email);
+        this.#cnpj = cnpj;
+        this.#razaoSocial = razaoSocial;
+    }
+
+    setCNPJ(cnpj) {
+        if (typeof cnpj === 'string' && cnpj.trim().length === 14) {
+            this.#cnpj = cnpj;
+            return true;
+        }
+        return false;
+    }
+
+    getCNPJ() {
         return this.#cnpj;
     }
 
-    setCnpj(cnpj) {
-        if(cnpj != 'null') {
+    setRazaoSocial(razaoSocial) {
+        if (typeof razaoSocial === 'string' && razaoSocial.trim() !== '') {
+            this.#razaoSocial = razaoSocial;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     getRazaoSocial() {
         return this.#razaoSocial;
-    }
-
-    setRazaoSocial() {
-        if(razaoSocial === '') {
-            console.log("O campo razão social não pode estar vazio");
-            return false;
-        } else {
-            return true;
-        }
     }
 }
